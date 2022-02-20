@@ -18,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
         filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
-        
+        this.registerReceiver(mReceiver, filter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        this.unregisterReceiver(mReceiver);
+        super.onDestroy();
     }
 }
