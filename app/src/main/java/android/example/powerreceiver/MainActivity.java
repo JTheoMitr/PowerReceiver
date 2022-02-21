@@ -33,6 +33,17 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter(ACTION_CUSTOM_BROADCAST));
     }
 
+    public void clickHandler(View view) {
+        switch (view.getId()){
+            case R.id.btnSubmit:
+                startSecond();
+                break;
+        }
+        // startHome();
+        // create button to go to recycler
+
+    }
+
     @Override
     protected void onDestroy() {
         this.unregisterReceiver(mReceiver);
@@ -43,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
     public void sendCustomBroadcast(View view) {
         Intent customBroadcastIntent = new Intent(ACTION_CUSTOM_BROADCAST);
         LocalBroadcastManager.getInstance(this).sendBroadcast(customBroadcastIntent);
+    }
+
+    private void startSecond() {
+//        String value = nameEditText.getText().toString();
+        Intent hIntent = new Intent(this, SecondActivity.class); //explicit intent
+//        hIntent.putExtra("namekey",value);
+        startActivityForResult(hIntent,123); //step 1
+        Log.i(DEBUG_TAG, "starting second activity");
     }
 
 
