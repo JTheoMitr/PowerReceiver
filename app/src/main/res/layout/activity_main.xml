@@ -35,12 +35,15 @@
 
     <Spinner
         android:id="@+id/spinner"
+        style="@android:style/Widget.Material.Light.Spinner"
         android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="25dp"
         android:background="@color/purple_500"
+        android:entries="@array/status"
+        android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

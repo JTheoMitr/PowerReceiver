@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="status">
+        <item>Receivers Working</item>
+        <item>Receivers NOT Working</item>
+    </string-array>
+</resources>
