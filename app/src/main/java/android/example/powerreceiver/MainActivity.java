@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    public static final String STATUS_MESSAGE = "android.example.com.activities.extra.STATUS";
     public static  String DEBUG_TAG = MainActivity.class.getSimpleName();
     private CustomReceiver mReceiver = new CustomReceiver();
     private static final String ACTION_CUSTOM_BROADCAST =
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         filter.addAction(Intent.ACTION_HEADSET_PLUG);
         this.registerReceiver(mReceiver, filter);
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter(ACTION_CUSTOM_BROADCAST));
+
     }
 
     public void clickHandler(View view) {
@@ -57,10 +61,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startSecond() {
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
 //        String value = nameEditText.getText().toString();
-        Intent hIntent = new Intent(this, SecondActivity.class); //explicit intent
-//        hIntent.putExtra("namekey",value);
-        startActivityForResult(hIntent,123); //step 1
+        Intent hIntent = new Intent(this, SecondActivity.class);
+        hIntent.putExtra(STATUS_MESSAGE, String.valueOf(spinner.getSelectedItem()));
+        startActivity(hIntent); //step 1
         Log.i(DEBUG_TAG, "starting second activity");
     }
 
@@ -92,4 +98,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
