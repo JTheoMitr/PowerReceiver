@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event){
 
         int action = event.getActionMasked();
-        String message = "default message";
 
         switch(action) {
             case (MotionEvent.ACTION_DOWN) :
