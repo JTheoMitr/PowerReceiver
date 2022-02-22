@@ -16,9 +16,13 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String status =
                 intent.getStringExtra(MainActivity.STATUS_MESSAGE);
-        TextView textView = (TextView) findViewById(R.id.statusView);
+        TextView textView = findViewById(R.id.statusView);
         textView.setText(status);
-        ImageView checkBox = (ImageView)findViewById(R.id.imageView2);
-        checkBox.setBackgroundResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+        ImageView checkBox = findViewById(R.id.imageView2);
+        if (status.equals("Receivers NOT Working")) {
+            checkBox.setBackgroundResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+        } else {
+            checkBox.setBackgroundResource(R.drawable.ic_baseline_check_box_24);
+        }
     }
 }
