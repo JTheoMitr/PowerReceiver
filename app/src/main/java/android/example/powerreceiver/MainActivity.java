@@ -17,8 +17,11 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    //for spinner status selection
     public static final String STATUS_MESSAGE = "android.example.com.activities.extra.STATUS";
+    // for Log
     public static  String DEBUG_TAG = MainActivity.class.getSimpleName();
+    // For Broadcast Receivers
     private CustomReceiver mReceiver = new CustomReceiver();
     private static final String ACTION_CUSTOM_BROADCAST =
             BuildConfig.APPLICATION_ID + ".ACTION_CUSTOM_BROADCAST";
